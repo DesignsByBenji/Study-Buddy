@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Study Buddy</string>
+    <string name="title_activity_class_selection">Class Selection</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

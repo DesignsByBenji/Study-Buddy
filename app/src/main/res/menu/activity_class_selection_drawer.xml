@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/select_campus"
+            android:icon="@drawable/ic_menu_search"
+            android:title="Select Campus" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_add"
+            android:title="Add Class" />
+        <item
+            android:id="@+id/nav_remove"
+            android:icon="@drawable/ic_menu_delete"
+            android:title="Remove Class" />
+    </group>
+
+    <item android:title="Course Selection">
+        <menu>
+            <item
+                android:id="@+id/nav_slideshow"
+                android:icon="@drawable/ic_menu_send"
+                android:title="CS4440 Operating Systems" />
+            <item
+                android:id="@+id/nav_manage"
+                android:icon="@drawable/ic_menu_send"
+                android:title="CS3801 Programming Paradigms" />
+        </menu>
+    </item>
+
+</menu>
