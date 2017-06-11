@@ -8,5 +8,6 @@
     <item name="ic_menu_delete" type="drawable">@android:drawable/ic_menu_delete</item>
     <item name="ic_menu_add" type="drawable">@android:drawable/ic_menu_add</item>
     <item name="ic_menu_search" type="drawable">@android:drawable/ic_menu_search</item>
+    <item name="ic_menu_email" type="drawable">@android:drawable/ic_dialog_email</item>
 
 </resources>
