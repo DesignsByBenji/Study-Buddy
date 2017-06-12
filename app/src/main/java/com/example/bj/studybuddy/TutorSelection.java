@@ -82,35 +82,59 @@ public class TutorSelection extends AppCompatActivity implements NavigationView.
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position);
+
                 SharedPreferences sharedpreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
-
-
+                String user = sharedpreferences.getString("user", null);
                 AlertDialog.Builder builder;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     builder = new AlertDialog.Builder(TutorSelection.this, android.R.style.Theme_DeviceDefault_Dialog_NoActionBar);
                 } else {
                     builder = new AlertDialog.Builder(TutorSelection.this);
                 }
-                final EditText input = new EditText(TutorSelection.this);
-                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
-                input.setTextColor(Color.WHITE);
-                builder.setTitle("Send Message")
-                        .setIcon(android.R.drawable.ic_dialog_email)
-                        .setMessage(item)
-                        .setView(input)
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
-                            }
-                        })
-                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        //.setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                if(user == null){
+                    Log.d("Status","NOT LOGGED IN!");
+                    builder.setTitle("Not Logged In")
+                            .setMessage("You must be logged in to send messages.")
+                            .setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setNeutralButton("Register", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+                else {
+                    final EditText input = new EditText(TutorSelection.this);
+                    // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
+                    input.setTextColor(Color.WHITE);
+                    builder.setTitle("Send Message")
+                            .setIcon(android.R.drawable.ic_dialog_email)
+                            .setMessage(item)
+                            .setView(input)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            //.setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
             }
 
         });
