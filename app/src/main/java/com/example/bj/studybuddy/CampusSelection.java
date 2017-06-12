@@ -25,10 +25,10 @@ public class CampusSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campus_selection);
         getCourses task = new getCourses();
-        task.execute();
+        try {task.execute().get();}
+        catch (Exception e){e.printStackTrace();};
+
         //CREATE LISTVIEW CONTENTS
-        try {Thread.sleep(300);}
-        catch(Exception e){ e.printStackTrace();}
         final ListView listview = (ListView) findViewById(R.id.listview);
         String[] values = results.split(",");
         final ArrayList<String> list = new ArrayList<String>();
@@ -54,8 +54,8 @@ public class CampusSelection extends AppCompatActivity {
             }
 
         });
-
     }
+
     private class getCourses extends AsyncTask{
         @Override
         protected Long doInBackground(Object... params) {

@@ -34,7 +34,8 @@ public class ClassSelection extends AppCompatActivity implements NavigationView.
         school = campus;
         setContentView(R.layout.activity_class_selection);
         getCourses task = new getCourses();
-        task.execute();
+        try {task.execute().get();}
+        catch (Exception e){e.printStackTrace();};
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,8 +49,6 @@ public class ClassSelection extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
 
         //CREATE LISTVIEW CONTENTS
-        try {Thread.sleep(300);}
-        catch(Exception e){ e.printStackTrace();}
         final ListView listview = (ListView) findViewById(R.id.listview);
         String[] values = results.split(",");
         Log.d("campus",campus);

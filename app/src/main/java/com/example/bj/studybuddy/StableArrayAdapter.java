@@ -2,13 +2,8 @@ package com.example.bj.studybuddy;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
-
 import java.util.HashMap;
 import java.util.List;
-
-/**
- * Created by bj on 5/23/17.
- */
 
 public class StableArrayAdapter  extends ArrayAdapter<String> {
     HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();

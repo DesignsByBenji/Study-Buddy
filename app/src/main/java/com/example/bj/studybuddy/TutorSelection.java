@@ -1,6 +1,8 @@
 package com.example.bj.studybuddy;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -45,7 +47,8 @@ public class TutorSelection extends AppCompatActivity implements NavigationView.
         school = campus;
         setContentView(R.layout.activity_class_selection);
         getSections task = new getSections();
-        task.execute();
+        try {task.execute().get();}
+        catch (Exception e){e.printStackTrace();};
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,8 +62,6 @@ public class TutorSelection extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
 
         //CREATE LISTVIEW CONTENTS
-        try {Thread.sleep(300);}
-        catch(Exception e){ e.printStackTrace();}
         final ListView listview = (ListView) findViewById(R.id.listview);
         String[] values = results.split(",");
 
@@ -81,6 +82,9 @@ public class TutorSelection extends AppCompatActivity implements NavigationView.
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position);
+                SharedPreferences sharedpreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+
+
                 AlertDialog.Builder builder;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     builder = new AlertDialog.Builder(TutorSelection.this, android.R.style.Theme_DeviceDefault_Dialog_NoActionBar);
